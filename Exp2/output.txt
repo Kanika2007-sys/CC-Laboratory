@@ -1,0 +1,5 @@
+tc@box:~$ cc demo.c
+tc@box:~$ ./a.out
+Enter year: 1991
+1991 is not a Leap Year
+tc@box:~$

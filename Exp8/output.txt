@@ -1,0 +1,7 @@
+$ docker build -t python-test .
+...
+Successfully built <image-id>
+Successfully tagged python-test:latest
+
+$ docker run python-test
+Docker is magic!

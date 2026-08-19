@@ -1,0 +1,26 @@
+$ docker container run -it ubuntu top
+top - 20:32:46 up 3 days, 17:40, 0 users, load average: 0.00, 0.01, 0.00
+Tasks: 1 total, 1 running, 0 sleeping, 0 stopped, 0 zombie
+%Cpu(s): 0.0 us, 0.1 sy, 0.0 ni, 99.9 id, 0.0 wa, 0.0
+KiB Mem : 2046768 total, 173308 free, 117248 used, 1756212 buff/cache
+KiB Swap: 1048572 total, 1048572 free, 0 used. 1548356 avail Mem
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+    1 root      20   0   36636   3072   2640 R   0.3  0.2   0:00.04 top
+
+$ docker container run --detach --publish 8080:80 --name nginx nginx
+$ curl localhost:8080
+<!DOCTYPE html>
+<html>
+<head><title>Welcome to nginx!</title></head>
+<body><h1>Welcome to nginx!</h1></body>
+</html>
+
+$ docker container run --detach --publish 8081:27017 --name mongo mongo:4.4
+$ curl localhost:8081
+It looks like you are trying to access MongoDB over HTTP on the native driver port.
+
+$ docker container ls
+CONTAINER ID   IMAGE   COMMAND                  CREATED         STATUS         PORTS                     NAMES
+d6777df89fea   nginx   "nginx -g 'daemon .." 3 minutes ago   Up 3 minutes   0.0.0.0:8080->80/tcp     nginx
+ead80a0db505   mongo   "docker-entrypoint.." 3 minutes ago   Up 3 minutes   0.0.0.0:8081->27017/tcp  mongo
+af549dccd5cf   ubuntu  "top"                    8 minutes ago   Up 8 minutes                             priceless_kepler
